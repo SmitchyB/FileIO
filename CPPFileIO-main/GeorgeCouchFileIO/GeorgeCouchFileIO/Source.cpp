@@ -1,3 +1,8 @@
+/* Block Comment Header
+Name George Couch and Brett Smitch
+Date 09/15/2021
+Our government spy device that takes down reminders, alarms, schedule, and messages
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
