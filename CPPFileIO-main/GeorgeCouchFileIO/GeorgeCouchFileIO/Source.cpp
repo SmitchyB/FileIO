@@ -10,28 +10,28 @@ int main()
 {
 	int usrChoice;
 	string contChoice = "y";
-	while (contChoice == "y")
+	while (contChoice == "y") //loop to keep using the Government Spy Device
 	{
-		cout << "What would you like to do?" << endl;
+		cout << "What would you like the government to track I mean what do you want to do?" << endl;
 		cout << "Make A Note | Get Tagged Notes | Get All Notes (1/2/3)" << endl;
-		cin >> usrChoice;
+		cin >> usrChoice; //gets what the user wants to do
 		cout << "\n";
-		switch (usrChoice)
+		switch (usrChoice) //switch statement for the different options
 		{
-		case 1:
+		case 1: //make a note choice
 			usrWriteLine();
 			break;
-		case 2:
+		case 2: //get tagged note choice
 			searchFile();
 			break;
-		case 3:
+		case 3: //get all notes choice
 			readFile();
 			break;
 		default:
 			break;
 		}
 		cout << "Would you like to do anything else? (y/n)" << endl;
-		getline(cin >> ws, contChoice);
+		getline(cin >> ws, contChoice); //gets if the user wants to keep using the Government spy device
 		cout << "\n";
 	}
 }

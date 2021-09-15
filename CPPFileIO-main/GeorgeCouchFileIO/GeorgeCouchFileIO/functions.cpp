@@ -9,78 +9,82 @@
 
 using namespace std;
 
-void usrWriteLine()
+void usrWriteLine()  //Creates file if it doesnt exist and allows user to make entry
 {
-	ofstream GoogleHome("GoogleHome.txt", ios::app);
+	ofstream GovernmentSpyDevice("GovernmentSpyDevice.txt", ios::app); //appends at the end of the file
 	string msg;
 	string msgType;
 	int usrWriteTypeChoice;
 	cout << "Choose Reminder, Message, Schedule, or Alarm. (1/2/3/4)" << endl;
-	cin >> usrWriteTypeChoice;
-	cout << "Type what you want me to remember" << endl;
+	cin >> usrWriteTypeChoice; //users choice
+	cout << "What do you want the government to remember?" << endl;
 	string usrstr;
-	getline(cin >> ws, usrstr);
+	getline(cin >> ws, usrstr); //entry
 	cout << "\n";
-	time_t timetoday;
-	time(&timetoday);
-	string currentTime = asctime(localtime(&timetoday));
+	time_t timetoday; //make time_t object
+	time(&timetoday); //getting the time
+	string currentTime = asctime(localtime(&timetoday)); //formats the time
 
-	switch (usrWriteTypeChoice)
+	switch (usrWriteTypeChoice) //switch statement for the different options for functionality
 	{
-	case 1:
-		msg = "REMINDER: " + usrstr + " -" + currentTime;
-		GoogleHome << msg << endl;
+	case 1: //reminder case
+		msg = "The Government will remember to tell you: " + usrstr + " -" + currentTime;
+		GovernmentSpyDevice << msg << endl;
 		break;
-	case 2:
-		msg = "MESSAGE: " + usrstr + " -" + currentTime;
-		GoogleHome << msg << endl;
+	case 2: //message case
+		msg = "Message: " + usrstr + " -" + currentTime;
+		GovernmentSpyDevice << msg << endl;
 		break;
-	case 3:
+	case 3: //schedule case
 		msg = "SCHEDULE: " + usrstr + " -" + currentTime;
-		GoogleHome << msg << endl;
+		GovernmentSpyDevice << msg << endl;
 		break;
-	case 4:
+	case 4: //alarm case
 		msg = "ALARM: " + usrstr + " -" + currentTime;
-		GoogleHome << msg << endl;
+		GovernmentSpyDevice << msg << endl;
 		break;
 	default:
 		break;
 	}
 
 	cout << "SAVED- " + msg << endl;
+	cout << "The government will remember" << endl;
+
 }
 
-void searchFile()
+void searchFile() //searching for a tag
 {
-	ifstream GoogleHomeRead("GoogleHome.txt");
+	ifstream GovernmentSpyDeviceRead("GovernmentSpyDevice.txt");
 	int usrTypeChoice;
 	cout << "What type of item would you like to search?" << endl;
 	cout << "Reminder, Message, Schedule, or Alarm. (1/2/3/4)" << endl;
 	cin >> usrTypeChoice;
 	cout << "\n";
 	string type;
-	switch (usrTypeChoice)
+	switch (usrTypeChoice) //switch statement to find the specific tag the user chose
 	{
-	case 1:
+	case 1: //reminder tag
 		type = "REMINDER:";
+		cout << "This is what the goverment remembers you said.";
 		break;
-	case 2:
-		type = "MESSAGE:";
+	case 2: //message tag
+		type = "The government told me to tell you:";
 		break;
-	case 3:
+	case 3: //schedule tag
 		type = "SCHEDULE:";
+		cout << "The government always knows what youre doing at all times!";
 		break;
-	case 4:
-		type = "ALARM:";
+	case 4: //alarm tag
+		type = "The government is telling you its time!:";
 		break;
 	default:
 		break;
 	}
 
 	string line;
-	while (getline(GoogleHomeRead, line))
+	while (getline(GovernmentSpyDeviceRead, line)) //searches through the files line by line
 	{
-		if (line.find(type) != string::npos) {
+		if (line.find(type) != string::npos) { //if type exist in line then print line
 			cout << line << endl;
 			cout << "\n";
 		}
@@ -88,11 +92,11 @@ void searchFile()
 	cout << "\n";
 }
 
-void readFile()
+void readFile() //read entire file
 {
-	ifstream GoogleHomeRead("GoogleHome.txt");
+	ifstream GovernmentSpyDeviceRead("GovernmentSpyDevice.txt");
 	string line;
-	while (getline(GoogleHomeRead, line)) {
+	while (getline(GovernmentSpyDeviceRead, line)) { //printing line by line of the file
 		cout << line << endl;
 	}
 }
