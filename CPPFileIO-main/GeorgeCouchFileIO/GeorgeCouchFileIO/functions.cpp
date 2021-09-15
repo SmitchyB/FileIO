@@ -17,7 +17,6 @@ void usrWriteLine()  //Creates file if it doesnt exist and allows user to make e
 	int usrWriteTypeChoice;
 	cout << "Choose Reminder, Message, Schedule, or Alarm. (1/2/3/4)" << endl;
 	cin >> usrWriteTypeChoice; //users choice
-	cout << "What do you want the government to remember?" << endl;
 	string usrstr;
 	getline(cin >> ws, usrstr); //entry
 	cout << "\n";
@@ -32,15 +31,15 @@ void usrWriteLine()  //Creates file if it doesnt exist and allows user to make e
 		GovernmentSpyDevice << msg << endl;
 		break;
 	case 2: //message case
-		msg = "Message: " + usrstr + " -" + currentTime;
+		msg = "The Government will tell you: " + usrstr + " -" + currentTime;
 		GovernmentSpyDevice << msg << endl;
 		break;
 	case 3: //schedule case
-		msg = "SCHEDULE: " + usrstr + " -" + currentTime;
+		msg = "The Government will add this to your schedule: " + usrstr + " -" + currentTime;
 		GovernmentSpyDevice << msg << endl;
 		break;
 	case 4: //alarm case
-		msg = "ALARM: " + usrstr + " -" + currentTime;
+		msg = "The Government will tell you it is time for: " + usrstr + " -" + currentTime;
 		GovernmentSpyDevice << msg << endl;
 		break;
 	default:
@@ -48,7 +47,6 @@ void usrWriteLine()  //Creates file if it doesnt exist and allows user to make e
 	}
 
 	cout << "SAVED- " + msg << endl;
-	cout << "The government will remember" << endl;
 
 }
 
